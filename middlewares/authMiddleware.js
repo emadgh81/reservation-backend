@@ -7,7 +7,7 @@ const verifyCustomerToken = (req, res , next) => {
     if (!token) {
         return res.status(401).json({message : 'no token provided'});
     };
-    jwt.verify(token, process.env.JWT_SECRET || `secret` , (err , decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET , (err , decoded) => {
         if (err) {
             return res.status(401).json({message : 'unauthorized'});
         };
